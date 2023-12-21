@@ -30,6 +30,11 @@ public class HospitalDaoImpl implements HospitalDao {
 
     @Override
     public Boolean add(Hospital hospital) {
+        for (Hospital hospital1 : dataBase.getAll()) {
+            if (hospital1.getId().equals(hospital.getId())){
+                throw new NotFoundException("error");
+            }
+        }
         return dataBase.save(hospital);
     }
 

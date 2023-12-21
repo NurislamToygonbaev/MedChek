@@ -9,7 +9,7 @@ public class DataBase {
     private List<Hospital> hospitals = new LinkedList<>();
 
     public Boolean save(Hospital hospital){
-        return this.hospitals.add(hospital);
+        return hospitals.add(hospital);
     }
 
     public Boolean remove(Hospital hospital){

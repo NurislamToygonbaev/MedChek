@@ -69,6 +69,6 @@ public class Patient {
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 ", gender=" + gender +
-                '}';
+                '}'+ "\n\n";
     }
 }

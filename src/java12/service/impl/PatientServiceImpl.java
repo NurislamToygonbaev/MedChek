@@ -19,7 +19,7 @@ public class PatientServiceImpl implements PatientService, GenericService<Patien
         try {
             dao.add(hospitalId, patient);
             return "Successfully added";
-        } catch (NotFoundException e) {
+        } catch (NotFoundException | IllegalArgumentException e) {
             return e.getMessage();
         }
     }
@@ -47,9 +47,16 @@ public class PatientServiceImpl implements PatientService, GenericService<Patien
     @Override
     public String addPatientsToHospital(Long id, List<Patient> patients) {
         try {
+            for (Patient patient : patients) {
+                for (Patient patient1 : dao.getAll()) {
+                    if (patient1.getId().equals(patient.getId())){
+                        throw new IllegalArgumentException("error");
+                    }
+                }
+            }
             dao.addPatientsToHospital(id, patients);
             return "Successfully added Patients";
-        } catch (NotFoundException e) {
+        } catch (NotFoundException | IllegalArgumentException e) {
             return e.getMessage();
         }
     }

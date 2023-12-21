@@ -47,6 +47,6 @@ public class Department {
                 "id=" + id +
                 ", departmentName='" + departmentName + '\'' +
                 ", doctors=" + doctors +
-                '}';
+                '}'+"\n\n";
     }
 }

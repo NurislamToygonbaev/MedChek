@@ -69,6 +69,6 @@ public class Doctor {
                 ", lastName='" + lastName + '\'' +
                 ", gender=" + gender +
                 ", experienceYear=" + experienceYear +
-                '}';
+                '}'+"\n\n";
     }
 }

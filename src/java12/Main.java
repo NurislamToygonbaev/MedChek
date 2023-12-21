@@ -32,7 +32,7 @@ public class Main {
                     case 4 -> System.out.println(hospital.getAllPatientFromHospital(1L));
                     case 5 -> System.out.println(hospital.deleteHospitalById(1L));
                     case 6 -> System.out.println(hospital.getAllHospitalByAddress("Ахунбаева 166"));
-                    case 7 -> department.add(1L, new Department(1L, "Хирургия"));
+                    case 7 -> System.out.println(department.add(1L, new Department(1L, "Хирургия")));
                     case 8 -> System.out.println(department.removeById(2L));
                     case 9 -> System.out.println(department.updateById(1L, new Department(1L, "Невропотолог")));
                     case 10 -> System.out.println(department.getAllDepartmentByHospital(1L));

@@ -42,9 +42,14 @@ public class DepartmentServiceImpl implements DepartmentService, GenericService<
     @Override
     public String add(Long hospitalId, Department department) {
         try {
+            for (Department department1 : getAllDepartmentByHospital(hospitalId)) {
+                if (department1.getId().equals(department.getId())){
+                    throw new IllegalArgumentException("error");
+                }
+            }
             departmentDao.add(hospitalId, department);
             return "Successfully added";
-        } catch (NotFoundException e){
+        } catch (NotFoundException | IllegalArgumentException e){
             return e.getMessage();
         }
     }

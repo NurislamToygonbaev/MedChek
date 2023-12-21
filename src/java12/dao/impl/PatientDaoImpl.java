@@ -31,6 +31,11 @@ public class PatientDaoImpl implements PatientDao {
     @Override
     public Boolean add(Long hospitalId, Patient patient) {
         for (Hospital hospital : dataBase.getAll()) {
+            for (Patient hospitalPatient : hospital.getPatients()) {
+                if (hospitalPatient.getId().equals(hospitalId)){
+                    throw new IllegalArgumentException("error");
+                }
+            }
             if (hospital.getId().equals(hospitalId)){
                return hospital.getPatients().add(patient);
             }

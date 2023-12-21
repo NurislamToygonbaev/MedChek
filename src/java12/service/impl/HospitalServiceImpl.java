@@ -16,8 +16,12 @@ public class HospitalServiceImpl implements HospitalService {
 
     @Override
     public String addHospital(Hospital hospital) {
-        hospitalDao.getAll().add(hospital);
-        return "Successfully saved";
+        try {
+            hospitalDao.add(hospital);
+            return "Successfully saved";
+        } catch (NotFoundException e){
+            return e.getMessage();
+        }
     }
 
     @Override

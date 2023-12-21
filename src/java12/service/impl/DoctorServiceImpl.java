@@ -57,9 +57,14 @@ public class DoctorServiceImpl implements DoctorService, GenericService<Doctor> 
     @Override
     public String add(Long hospitalId, Doctor doctor) {
         try {
+            for (Doctor doctor1 : getAllDoctorsByHospitalId(hospitalId)) {
+                if (doctor1.getId().equals(doctor.getId())){
+                    throw new IllegalArgumentException("error");
+                }
+            }
             doctorDao.add(hospitalId, doctor);
             return "Successfully added";
-        } catch (NotFoundException e){
+        } catch (NotFoundException | IllegalArgumentException e){
             return e.getMessage();
         }
     }
