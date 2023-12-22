@@ -65,7 +65,9 @@ public class DoctorDaoImpl implements DoctorDao {
                 if (departmentId.equals(department.getId())) {
                     for (Doctor doctor : hospital.getDoctors()) {
                         if (doctorsId.contains(doctor.getId())){
-                           return department.getDoctors().add(doctor);
+                            department.getDoctors().add(doctor);
+                            hospital.getDoctors().remove(doctor);
+                            return true;
                         }
                     }
                     throw new IllegalArgumentException("Doctors with "+doctorsId+" not found!");

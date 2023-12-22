@@ -46,7 +46,7 @@ public class Main {
                     case 18 -> System.out.println(doctor.getAllDoctorsByDepartmentId(1L));
                     case 19 -> System.out.println(patient.add(1L, new Patient(1L, "Мырзайым", "Келдибекова", 20, Gender.FEMALE)));
                     case 20 -> System.out.println(patient.removeById(1L));
-                    case 21 -> patient.updateById(1L, new Patient(1L, "Мирлан", "Арстанбеков", 21, Gender.MALE));
+                    case 21 -> System.out.println(patient.updateById(1L, new Patient(1L, "Мирлан", "Арстанбеков", 21, Gender.MALE)));
                     case 22 -> System.out.println(patient.addPatientsToHospital(1L, patients()));
                     case 23 -> System.out.println(patient.getPatientById(7L));
                     case 24 -> System.out.println(patient.getPatientByAge());
@@ -70,7 +70,7 @@ public class Main {
                 6 ->  Get all Hospitals by address                 19 -> Add Patient to Hospital by ID
                 7 ->  Add Department to Hospital by ID             20 -> Remove Patient by ID
                 8 ->  Remove Department by ID                      21 -> Update Patient by ID
-                9 -> Update Department by ID                       22 -> Add Patients to Hospital by ID
+                9 ->  Update Department by ID                      22 -> Add Patients to Hospital by ID
                 10 -> Get all Department by Hospital ID            23 -> Get Patient by ID
                 11 -> Find Department by name                      24 -> Get Patient by age
                 12 -> Add Doctor to Hospital by ID                 25 -> Sort Patient by age
