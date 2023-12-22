@@ -47,7 +47,8 @@ public class DepartmentServiceImpl implements DepartmentService, GenericService<
                     throw new IllegalArgumentException("error");
                 }
             }
-            departmentDao.add(hospitalId, department);
+            Boolean add = departmentDao.add(hospitalId, department);
+            if (add.equals(false)) System.out.println();
             return "Successfully added";
         } catch (NotFoundException | IllegalArgumentException e){
             return e.getMessage();
@@ -57,7 +58,8 @@ public class DepartmentServiceImpl implements DepartmentService, GenericService<
     @Override
     public String removeById(Long id) {
         try {
-            departmentDao.remove(id);
+            Boolean remove = departmentDao.remove(id);
+            if (remove.equals(false)) System.out.println(false);
             return "Successfully deleted";
         } catch (NotFoundException e){
             return e.getMessage();
@@ -67,7 +69,8 @@ public class DepartmentServiceImpl implements DepartmentService, GenericService<
     @Override
     public String updateById(Long id, Department department) {
         try {
-            departmentDao.update(id, department);
+            Boolean update = departmentDao.update(id, department);
+            if (update.equals(false)) System.out.println(false);
             return "Successfully updated";
         } catch (NotFoundException e){
             return e.getMessage();

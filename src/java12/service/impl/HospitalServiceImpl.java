@@ -52,7 +52,8 @@ public class HospitalServiceImpl implements HospitalService {
     @Override
     public String deleteHospitalById(Long id) {
         try {
-            hospitalDao.delete(id);
+            Boolean delete = hospitalDao.delete(id);
+            if (delete.equals(false)) System.out.println(false);
             return "Successfully deleted";
         } catch (NotFoundException e){
             return e.getMessage();

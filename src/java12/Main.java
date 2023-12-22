@@ -88,4 +88,6 @@ public class Main {
     private static List<Long> ids(){
         return new ArrayList<>(List.of(1L));
     }
+
+    
 }

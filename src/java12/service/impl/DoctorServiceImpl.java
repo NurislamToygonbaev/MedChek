@@ -27,7 +27,8 @@ public class DoctorServiceImpl implements DoctorService, GenericService<Doctor> 
     @Override
     public String assignDoctorToDepartment(Long departmentId, List<Long> doctorsId) {
         try {
-            doctorDao.assignDoctorToDepartment(departmentId, doctorsId);
+            Boolean b = doctorDao.assignDoctorToDepartment(departmentId, doctorsId);
+            if (b.equals(false)) System.out.println(false);
             return "Successfully assign doctor to Department";
         } catch (NotFoundException | IllegalArgumentException e) {
             return e.getMessage();
@@ -72,7 +73,8 @@ public class DoctorServiceImpl implements DoctorService, GenericService<Doctor> 
     @Override
     public String removeById(Long id) {
         try {
-            doctorDao.remove(id);
+            Boolean remove = doctorDao.remove(id);
+            if (remove.equals(false)) System.out.println(false);
             return "Successfully deleted";
         } catch (NotFoundException e){
             return e.getMessage();
@@ -82,7 +84,8 @@ public class DoctorServiceImpl implements DoctorService, GenericService<Doctor> 
     @Override
     public String updateById(Long id, Doctor doctor) {
         try {
-            doctorDao.updateById(id, doctor);
+            Boolean b = doctorDao.updateById(id, doctor);
+            if (b.equals(false)) System.out.println(false);
             return "Successfully updated";
         } catch (NotFoundException e){
             return e.getMessage();
