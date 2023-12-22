@@ -1,11 +1,13 @@
 package java12.dao.impl;
 
+import java12.MyGeneratorId;
 import java12.dao.DoctorDao;
 import java12.database.DataBase;
 import java12.models.Department;
 import java12.models.Doctor;
 import java12.models.Hospital;
 import java12.service.impl.NotFoundException;
+
 import java.util.List;
 
 public class DoctorDaoImpl implements DoctorDao {
@@ -31,7 +33,8 @@ public class DoctorDaoImpl implements DoctorDao {
     @Override
     public Boolean add(Long hospitalId, Doctor doctor) {
         for (Hospital hospital : dataBase.getAll()) {
-            if (hospital.getId().equals(hospitalId)){
+            if (hospital.getId().equals(hospitalId)) {
+                doctor.setId(MyGeneratorId.generatorDoctor());
                 return hospital.getDoctors().add(doctor);
             }
         }
@@ -42,8 +45,8 @@ public class DoctorDaoImpl implements DoctorDao {
     public Boolean remove(Long id) {
         for (Hospital hospital : dataBase.getAll()) {
             for (Doctor doctor : hospital.getDoctors()) {
-                if (doctor.getId().equals(id)){
-                   return hospital.getDoctors().remove(doctor);
+                if (doctor.getId().equals(id)) {
+                    return hospital.getDoctors().remove(doctor);
                 }
             }
         }
@@ -64,11 +67,13 @@ public class DoctorDaoImpl implements DoctorDao {
             for (Department department : hospital.getDepartments()) {
                 if (departmentId.equals(department.getId())) {
                     for (Doctor doctor : hospital.getDoctors()) {
-                        if (doctorsId.contains(doctor.getId())){
-                            return department.getDoctors().add(doctor);
+                        if (doctorsId.contains(doctor.getId())) {
+                            department.getDoctors().add(doctor);
+                            hospital.getDoctors().remove(doctor);
+                            return true;
                         }
                     }
-                    throw new IllegalArgumentException("Doctors with "+doctorsId+" not found!");
+                    throw new IllegalArgumentException("Doctors with " + doctorsId + " not found!");
                 }
             }
         }
@@ -107,6 +112,17 @@ public class DoctorDaoImpl implements DoctorDao {
                     hospitalDoctor.setGender(doctor.getGender());
                     hospitalDoctor.setExperienceYear(doctor.getExperienceYear());
                     return true;
+                }
+            }
+            for (Department department : hospital.getDepartments()) {
+                for (Doctor hospitalDoctor : department.getDoctors()) {
+                    if (hospitalDoctor.getId().equals(id)) {
+                        hospitalDoctor.setFirstName(doctor.getFirstName());
+                        hospitalDoctor.setLastName(doctor.getLastName());
+                        hospitalDoctor.setGender(doctor.getGender());
+                        hospitalDoctor.setExperienceYear(doctor.getExperienceYear());
+                        return true;
+                    }
                 }
             }
         }

@@ -1,5 +1,6 @@
 package java12.dao.impl;
 
+import java12.MyGeneratorId;
 import java12.dao.PatientDao;
 import java12.database.DataBase;
 import java12.models.Hospital;
@@ -30,6 +31,7 @@ public class PatientDaoImpl implements PatientDao {
 
     @Override
     public Boolean add(Long hospitalId, Patient patient) {
+        patient.setId(MyGeneratorId.generatorPatient());
         for (Hospital hospital : dataBase.getAll()) {
             for (Patient hospitalPatient : hospital.getPatients()) {
                 if (hospitalPatient.getId().equals(hospitalId)){
@@ -79,7 +81,10 @@ public class PatientDaoImpl implements PatientDao {
     public Boolean addPatientsToHospital(Long id, List<Patient> patients) {
         for (Hospital hospital : dataBase.getAll()) {
             if (hospital.getId().equals(id)){
-               return hospital.getPatients().addAll(patients);
+                for (Patient patient : patients) {
+                    patient.setId(MyGeneratorId.generatorPatient());
+                }
+                return hospital.getPatients().addAll(patients);
             }
         }
         throw new NotFoundException("Hospital with " + id + " not found");

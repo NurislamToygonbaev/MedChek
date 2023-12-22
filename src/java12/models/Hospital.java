@@ -14,8 +14,7 @@ public class Hospital {
     public Hospital() {
     }
 
-    public Hospital(Long id, String hospitalName, String address) {
-        this.id = id;
+    public Hospital(String hospitalName, String address) {
         this.hospitalName = hospitalName;
         this.address = address;
     }

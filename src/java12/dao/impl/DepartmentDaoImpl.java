@@ -1,5 +1,6 @@
 package java12.dao.impl;
 
+import java12.MyGeneratorId;
 import java12.dao.DepartmentDao;
 import java12.database.DataBase;
 import java12.models.Department;
@@ -20,6 +21,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
     public Boolean add(Long hospitalId, Department department) {
         for (Hospital hospital : dataBase.getAll()) {
             if (hospital.getId().equals(hospitalId)) {
+                department.setId(MyGeneratorId.generatorDepartment());
                 return hospital.getDepartments().add(department);
             }
         }

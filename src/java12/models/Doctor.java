@@ -13,8 +13,7 @@ public class Doctor {
     public Doctor() {
     }
 
-    public Doctor(Long id, String firstName, String lastName, Gender gender, int experienceYear) {
-        this.id = id;
+    public Doctor(String firstName, String lastName, Gender gender, int experienceYear) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;

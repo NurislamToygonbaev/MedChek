@@ -26,27 +26,27 @@ public class Main {
                 menu();
                 switch (scanner.nextInt()) {
                     case 0 -> {break OuterLoop;}
-                    case 1 -> System.out.println(hospital.addHospital(new Hospital(1L, "Городская больница", "Ахунбаева 166")));
+                    case 1 -> System.out.println(hospital.addHospital(new Hospital("Городская больница", "Ахунбаева 166")));
                     case 2 -> System.out.println(hospital.findHospitalById(1L));
                     case 3 -> System.out.println(hospital.getAllHospital());
                     case 4 -> System.out.println(hospital.getAllPatientFromHospital(1L));
                     case 5 -> System.out.println(hospital.deleteHospitalById(1L));
                     case 6 -> System.out.println(hospital.getAllHospitalByAddress("Ахунбаева 166"));
-                    case 7 -> System.out.println(department.add(1L, new Department(1L, "Хирургия")));
+                    case 7 -> System.out.println(department.add(1L, new Department("Хирургия")));
                     case 8 -> System.out.println(department.removeById(2L));
-                    case 9 -> System.out.println(department.updateById(1L, new Department(1L, "Невропотолог")));
+                    case 9 -> System.out.println(department.updateById(1L, new Department("Невропотолог")));
                     case 10 -> System.out.println(department.getAllDepartmentByHospital(1L));
                     case 11 -> System.out.println(department.findDepartmentByName("Хирургия"));
-                    case 12 -> System.out.println(doctor.add(1L, new Doctor(1L, "Нурлан", "Абыбибиллаев", Gender.MALE, 10)));
+                    case 12 -> System.out.println(doctor.add(1L, new Doctor("Нурлан", "Абыбибиллаев", Gender.MALE, 10)));
                     case 13 -> System.out.println(doctor.removeById(1L));
-                    case 14 -> System.out.println(doctor.updateById(1L, new Doctor(1L, "Айтурган", "Максатбек кызы", Gender.FEMALE, 15)));
+                    case 14 -> System.out.println(doctor.updateById(1L, new Doctor("Айтурган", "Максатбек кызы", Gender.FEMALE, 15)));
                     case 15 -> System.out.println(doctor.findDoctorById(1L));
                     case 16 -> System.out.println(doctor.assignDoctorToDepartment(1L, ids()));
                     case 17 -> System.out.println(doctor.getAllDoctorsByHospitalId(1L));
                     case 18 -> System.out.println(doctor.getAllDoctorsByDepartmentId(1L));
-                    case 19 -> System.out.println(patient.add(1L, new Patient(1L, "Мырзайым", "Келдибекова", 20, Gender.FEMALE)));
+                    case 19 -> System.out.println(patient.add(1L, new Patient("Мырзайым", "Келдибекова", 20, Gender.FEMALE)));
                     case 20 -> System.out.println(patient.removeById(1L));
-                    case 21 -> System.out.println(patient.updateById(1L, new Patient(1L, "Мирлан", "Арстанбеков", 21, Gender.MALE)));
+                    case 21 -> System.out.println(patient.updateById(1L, new Patient("Мирлан", "Арстанбеков", 21, Gender.MALE)));
                     case 22 -> System.out.println(patient.addPatientsToHospital(1L, patients()));
                     case 23 -> System.out.println(patient.getPatientById(7L));
                     case 24 -> System.out.println(patient.getPatientByAge());
@@ -79,10 +79,10 @@ public class Main {
     }
     private static List<Patient> patients(){
         return new ArrayList<>(Arrays.asList(
-                new Patient(2L, "Жигит", "Турумбеков", 24, Gender.MALE),
-                new Patient(3L, "Гулумкан", "Садирова", 19, Gender.FEMALE),
-                new Patient(4L, "Айзат", "Дуйшеева", 18, Gender.FEMALE),
-                new Patient(5L, "Датка", "Маматжанова", 21, Gender.FEMALE)
+                new Patient("Жигит", "Турумбеков", 24, Gender.MALE),
+                new Patient("Гулумкан", "Садирова", 19, Gender.FEMALE),
+                new Patient("Айзат", "Дуйшеева", 18, Gender.FEMALE),
+                new Patient("Датка", "Маматжанова", 21, Gender.FEMALE)
         ));
     }
     private static List<Long> ids(){
